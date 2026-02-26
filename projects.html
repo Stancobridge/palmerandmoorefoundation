@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Our Projects | Palmer &amp; Moore Poverty Alleviation Foundation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#059669',
+            secondary: '#1d4ed8',
+            accent: '#f59e0b',
+            background: '#fafaf9',
+            textMain: '#1c1917',
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-transitions">
+    .nav-transition { transition: all 0.3s ease-in-out; }
+    .hero-overlay { background: rgba(0, 0, 0, 0.4); }
+    .card-hover:hover { transform: translateY(-5px); transition: transform 0.3s ease; }
+    .modal-active { overflow: hidden; }
+    .filter-btn.active {
+      background-color: #059669;
+      color: white;
+    }
+    .project-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+  </style>
+</head>
+<body class="bg-background text-textMain font-sans scroll-smooth">
+<!-- BEGIN: MainHeader -->
+<header class="fixed w-full z-50 bg-white/95 backdrop-blur-sm shadow-sm" data-purpose="main-navigation">
+<nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+<a class="font-serif text-2xl font-bold text-primary tracking-tight" href="index.html">
+        Palmer &amp; Moore
+      </a>
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-medium hover:text-primary nav-transition" href="index.html">Home</a>
+<a class="font-medium hover:text-primary nav-transition" href="about.html">About Us</a>
+<a class="font-medium text-primary nav-transition" href="projects.html">Projects</a>
+<a class="font-medium hover:text-primary nav-transition" href="teams.html">Team</a>
+<a class="font-medium hover:text-primary nav-transition" href="contact-us.html">Contact</a>
+<button class="bg-primary text-white px-6 py-2.5 rounded-full font-bold hover:bg-emerald-700 transition-colors shadow-lg">
+          Donate Now
+        </button>
+</div>
+<button class="md:hidden text-2xl focus:outline-none" id="mobile-menu-btn">
+<i class="fa-solid fa-bars"></i>
+</button>
+</nav>
+<div class="hidden md:hidden bg-white border-t border-stone-200 px-6 py-4 flex flex-col space-y-4" id="mobile-menu">
+<a class="block font-medium" href="index.html">Home</a>
+<a class="block font-medium" href="about.html">About Us</a>
+<a class="block font-medium" href="projects.html">Projects</a>
+<a class="block font-medium" href="teams.html">Team</a>
+<a class="block font-medium" href="contact-us.html">Contact</a>
+<button class="w-full bg-primary text-white px-6 py-3 rounded-md font-bold">Donate Now</button>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: PageHero -->
+<section class="relative py-32 md:py-40 text-white overflow-hidden flex items-center justify-center text-center">
+<div class="absolute inset-0 z-0">
+<img alt="Hero Background" class="w-full h-full object-cover" src="images/projects/WhatsApp Image 2026-02-25 at 8.25.35 PM.jpeg"/>
+<div class="absolute inset-0 bg-primary/80"></div>
+</div>
+<div class="container mx-auto px-6 relative z-10">
+<h1 class="font-serif text-4xl md:text-6xl mb-6 leading-tight">Our Impactful Projects</h1>
+<p class="text-lg md:text-xl max-w-2xl mx-auto text-emerald-100">
+        Transparent, sustainable initiatives designed to break the cycle of poverty through direct community action.
+      </p>
+</div>
+</section>
+<!-- END: PageHero -->
+<!-- BEGIN: ProjectFilters -->
+<section class="py-12 bg-white sticky top-[72px] z-40 border-b border-stone-200">
+<div class="container mx-auto px-6">
+<div class="flex flex-wrap justify-center gap-2 md:gap-4" id="filter-container">
+<button class="filter-btn active px-5 py-2 rounded-full border border-primary text-primary font-medium transition hover:bg-primary hover:text-white" data-filter="all">All</button>
+<button class="filter-btn px-5 py-2 rounded-full border border-primary text-primary font-medium transition hover:bg-primary hover:text-white" data-filter="farming">Farming</button>
+<button class="filter-btn px-5 py-2 rounded-full border border-primary text-primary font-medium transition hover:bg-primary hover:text-white" data-filter="sme-funding">SME Funding</button>
+<button class="filter-btn px-5 py-2 rounded-full border border-primary text-primary font-medium transition hover:bg-primary hover:text-white" data-filter="education">Education</button>
+<button class="filter-btn px-5 py-2 rounded-full border border-primary text-primary font-medium transition hover:bg-primary hover:text-white" data-filter="food-distribution">Food Distribution</button>
+<button class="filter-btn px-5 py-2 rounded-full border border-primary text-primary font-medium transition hover:bg-primary hover:text-white" data-filter="orphan-care">Orphan Care</button>
+<button class="filter-btn px-5 py-2 rounded-full border border-primary text-primary font-medium transition hover:bg-primary hover:text-white" data-filter="health">Health</button>
+<button class="filter-btn px-5 py-2 rounded-full border border-primary text-primary font-medium transition hover:bg-primary hover:text-white" data-filter="vocational">Vocational</button>
+<button class="filter-btn px-5 py-2 rounded-full border border-primary text-primary font-medium transition hover:bg-primary hover:text-white" data-filter="needy">Helping the Needy</button>
+</div>
+</div>
+</section>
+<!-- END: ProjectFilters -->
+<!-- BEGIN: ProjectGrid -->
+<section class="py-16">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+<!-- Project 1: Farming -->
+<article class="project-card bg-white rounded-xl shadow-md overflow-hidden flex flex-col border border-stone-200" data-category="farming" data-id="p1">
+<div class="h-56 relative overflow-hidden">
+<img alt="Sustainable Irrigation" class="w-full h-full object-cover" src="images/projects/WhatsApp Image 2026-02-25 at 8.25.34 PM.jpeg"/>
+<span class="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Farming</span>
+</div>
+<div class="p-6 flex-grow">
+<h3 class="text-xl font-bold mb-2">Sustainable Irrigation Initiative</h3>
+<p class="text-stone-600 mb-4 line-clamp-3">Providing modern drip irrigation systems to smallholder farmers to ensure year-round crop production despite climate challenges.</p>
+<div class="flex justify-between items-center mt-auto">
+<span class="text-sm font-semibold text-primary">Goal: $15,000</span>
+<button class="text-secondary font-bold hover:underline" onclick="openModal('p1')">View Details <i class="fa-solid fa-arrow-right ml-1"></i></button>
+</div>
+</div>
+</article>
+<!-- Project 2: SME -->
+<article class="project-card bg-white rounded-xl shadow-md overflow-hidden flex flex-col border border-stone-200" data-category="sme-funding" data-id="p2">
+<div class="h-56 relative overflow-hidden">
+<img alt="SME Funding" class="w-full h-full object-cover" src="images/projects/WhatsApp Image 2026-02-25 at 8.28.51 PM.jpeg"/>
+<span class="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full uppercase">SME Funding</span>
+</div>
+<div class="p-6 flex-grow">
+<h3 class="text-xl font-bold mb-2">Women Entrepreneurs Fund</h3>
+<p class="text-stone-600 mb-4 line-clamp-3">Interest-free micro-loans and mentorship for women starting small retail and service businesses in rural areas.</p>
+<div class="flex justify-between items-center mt-auto">
+<span class="text-sm font-semibold text-primary">Impact: 45 Businesses</span>
+<button class="text-secondary font-bold hover:underline" onclick="openModal('p2')">View Details <i class="fa-solid fa-arrow-right ml-1"></i></button>
+</div>
+</div>
+</article>
+<!-- Project 3: Education -->
+<article class="project-card bg-white rounded-xl shadow-md overflow-hidden flex flex-col border border-stone-200" data-category="education" data-id="p3">
+<div class="h-56 relative overflow-hidden">
+<img alt="Education" class="w-full h-full object-cover" src="images/projects/WhatsApp Image 2026-02-25 at 8.28.50 PM.jpeg"/>
+<span class="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Education</span>
+</div>
+<div class="p-6 flex-grow">
+<h3 class="text-xl font-bold mb-2">Digital Literacy Program</h3>
+<p class="text-stone-600 mb-4 line-clamp-3">Equipping primary schools with solar-powered computer labs and providing basic coding training for youth.</p>
+<div class="flex justify-between items-center mt-auto">
+<span class="text-sm font-semibold text-primary">Active</span>
+<button class="text-secondary font-bold hover:underline" onclick="openModal('p3')">View Details <i class="fa-solid fa-arrow-right ml-1"></i></button>
+</div>
+</div>
+</article>
+<!-- Project 4: Food -->
+<article class="project-card bg-white rounded-xl shadow-md overflow-hidden flex flex-col border border-stone-200" data-category="food-distribution" data-id="p4">
+<div class="h-56 relative overflow-hidden">
+<img alt="Food Distribution" class="w-full h-full object-cover" src="images/projects/WhatsApp Image 2026-02-25 at 8.00.28 PM.jpeg"/>
+<span class="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Food Distribution</span>
+</div>
+<div class="p-6 flex-grow">
+<h3 class="text-xl font-bold mb-2">Weekend Meals Program</h3>
+<p class="text-stone-600 mb-4 line-clamp-3">Monthly food hampers containing essential nutrition for families facing extreme food insecurity.</p>
+<div class="flex justify-between items-center mt-auto">
+<span class="text-sm font-semibold text-primary">500 Families Monthly</span>
+<button class="text-secondary font-bold hover:underline" onclick="openModal('p4')">View Details <i class="fa-solid fa-arrow-right ml-1"></i></button>
+</div>
+</div>
+</article>
+<!-- Project 5: Orphan Care -->
+<article class="project-card bg-white rounded-xl shadow-md overflow-hidden flex flex-col border border-stone-200" data-category="orphan-care" data-id="p5">
+<div class="h-56 relative overflow-hidden">
+<img alt="Orphan Care" class="w-full h-full object-cover" src="images/projects/WhatsApp Image 2026-02-25 at 8.00.27 PM.jpeg"/>
+<span class="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Orphan Care</span>
+</div>
+<div class="p-6 flex-grow">
+<h3 class="text-xl font-bold mb-2">The Hope Sanctuary</h3>
+<p class="text-stone-600 mb-4 line-clamp-3">Comprehensive support including housing, education, and healthcare for orphaned and abandoned children.</p>
+<div class="flex justify-between items-center mt-auto">
+<span class="text-sm font-semibold text-primary">Goal: New Wing</span>
+<button class="text-secondary font-bold hover:underline" onclick="openModal('p5')">View Details <i class="fa-solid fa-arrow-right ml-1"></i></button>
+</div>
+</div>
+</article>
+<!-- Project 6: Needy -->
+<article class="project-card bg-white rounded-xl shadow-md overflow-hidden flex flex-col border border-stone-200" data-category="needy" data-id="p6">
+<div class="h-56 relative overflow-hidden">
+<img alt="Helping Needy" class="w-full h-full object-cover" src="images/projects/WhatsApp Image 2026-02-25 at 8.00.21 PM.jpeg"/>
+<span class="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Helping the Needy</span>
+</div>
+<div class="p-6 flex-grow">
+<h3 class="text-xl font-bold mb-2">Winter Blanket Drive</h3>
+<p class="text-stone-600 mb-4 line-clamp-3">Urgent seasonal intervention providing warmth and shelter materials to the homeless and elderly.</p>
+<div class="flex justify-between items-center mt-auto">
+<span class="text-sm font-semibold text-primary">Ongoing</span>
+<button class="text-secondary font-bold hover:underline" onclick="openModal('p6')">View Details <i class="fa-solid fa-arrow-right ml-1"></i></button>
+</div>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- END: ProjectGrid -->
+<!-- BEGIN: ProjectModal -->
+<div class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4" id="project-modal">
+<div class="absolute inset-0 bg-black bg-opacity-70 backdrop-blur-sm" onclick="closeModal()"></div>
+<div class="relative bg-white w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl shadow-2xl">
+<button class="absolute top-4 right-4 text-stone-500 hover:text-textMain z-10 bg-white rounded-full p-2" onclick="closeModal()">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<div class="flex flex-col md:flex-row h-full">
+<div class="w-full md:w-1/3 bg-stone-50 p-8 border-r border-stone-200">
+<div class="inline-block px-3 py-1 rounded-full bg-primary text-white text-xs font-bold uppercase mb-4" id="modal-category">Category</div>
+<h2 class="font-serif text-2xl mb-4" id="modal-title">Project Title</h2>
+<div class="space-y-6">
+<div>
+<span class="block text-sm text-stone-500 uppercase tracking-wider">Impact Target</span>
+<span class="text-xl font-bold text-primary" id="modal-impact">Metrics</span>
+</div>
+<div>
+<span class="block text-sm text-stone-500 uppercase tracking-wider">Status</span>
+<span class="text-lg font-medium" id="modal-status">Active</span>
+</div>
+<a class="block text-center bg-accent text-white font-bold py-3 rounded-xl hover:bg-amber-600 transition shadow-lg" href="#">
+              Support This Project
+            </a>
+</div>
+</div>
+<div class="w-full md:w-2/3 p-8">
+<div class="mb-8 rounded-xl overflow-hidden shadow-md">
+<img alt="Detail Image" class="w-full h-auto object-cover" id="modal-image" src="images/projects/WhatsApp Image 2026-02-25 at 8.25.35 PM.jpeg"/>
+</div>
+<div class="prose max-w-none">
+<h4 class="text-lg font-bold mb-2">The Story</h4>
+<div class="text-stone-600 leading-relaxed mb-6" id="modal-description">
+              Full project story goes here...
+            </div>
+<h4 class="text-lg font-bold mb-2">Why It Matters</h4>
+<p class="text-stone-600 leading-relaxed" id="modal-why">
+              Additional context on the project's long-term sustainability and importance to the local community.
+            </p>
+</div>
+<div class="mt-8 grid grid-cols-3 gap-2" id="modal-gallery">
+<img class="rounded-xl border border-stone-200" src="images/projects/WhatsApp Image 2026-02-25 at 8.00.26 PM.jpeg"/>
+<img class="rounded-xl border border-stone-200" src="images/projects/WhatsApp Image 2026-02-25 at 8.00.25 PM.jpeg"/>
+<img class="rounded-xl border border-stone-200" src="images/projects/WhatsApp Image 2026-02-25 at 8.00.24 PM.jpeg"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- END: ProjectModal -->
+<!-- BEGIN: Footer -->
+<footer class="bg-textMain text-stone-300 py-16">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+<div>
+<h3 class="font-serif text-2xl text-white mb-6">Palmer &amp; Moore</h3>
+<p class="text-sm leading-relaxed mb-6">
+            Dedicated to uplifting the most vulnerable populations in Nigeria through transparent, sustainable, and community-driven initiatives.
+          </p>
+<div class="flex space-x-4">
+<a class="hover:text-primary transition-colors text-xl" href="#"><i class="fa-brands fa-facebook"></i></a>
+<a class="hover:text-primary transition-colors text-xl" href="#"><i class="fa-brands fa-twitter"></i></a>
+<a class="hover:text-primary transition-colors text-xl" href="#"><i class="fa-brands fa-instagram"></i></a>
+<a class="hover:text-primary transition-colors text-xl" href="#"><i class="fa-brands fa-linkedin"></i></a>
+</div>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Quick Links</h4>
+<ul class="space-y-4 text-sm">
+<li><a class="hover:text-white transition-colors" href="index.html">Home</a></li>
+<li><a class="hover:text-white transition-colors" href="about.html">About Us</a></li>
+<li><a class="hover:text-white transition-colors" href="projects.html">Our Projects</a></li>
+<li><a class="hover:text-white transition-colors" href="teams.html">Meet the Team</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Contact Us</h4>
+<ul class="space-y-4 text-sm">
+<li class="flex items-start">
+              <i class="fa-solid fa-location-dot mt-1 mr-3 text-primary"></i>
+              <span>House c 149 Broadview idu estate FCT Abuja Nigeria</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fa-solid fa-location-dot mt-1 mr-3 text-primary"></i>
+              <span>No. 1 Shedrack Street Nsugbe College of Education, Onitsha, Anambra State</span>
+            </li>
+<li class="flex items-center">
+<i class="fa-solid fa-phone mr-3 text-primary"></i>
+<span>+234 (0) 800-PALMER-MOORE</span>
+</li>
+<li class="flex items-center">
+<i class="fa-solid fa-envelope mr-3 text-primary"></i>
+<span>info@palmerandmoore.org</span>
+</li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Stay Updated</h4>
+<p class="text-sm mb-4">Subscribe to our newsletter for impact reports.</p>
+<form class="flex">
+<input class="bg-stone-800 border-none rounded-l-md px-4 py-2 w-full focus:ring-1 focus:ring-primary text-sm" placeholder="Email address" type="email"/>
+<button class="bg-primary text-white px-4 py-2 rounded-r-md hover:bg-emerald-700 transition-colors">
+<i class="fa-solid fa-paper-plane"></i>
+</button>
+</form>
+</div>
+</div>
+<div class="border-t border-stone-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs">
+<p>© 2024 Palmer &amp; Moore Poverty Alleviation Foundation. All Rights Reserved.</p>
+<p class="mt-4 md:mt-0 font-bold text-stone-500 uppercase tracking-widest">Registered NGO in Nigeria (CAC/IT/000000)</p>
+</div>
+</div>
+</footer>
+<!-- END: Footer -->
+<script data-purpose="mobile-menu-logic">
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+<script data-purpose="project-data">
+    const projectData = {
+      p1: {
+        title: "Sustainable Irrigation Initiative",
+        category: "Farming",
+        categorySlug: "farming",
+        impact: "$15,000 Needed",
+        status: "Fundraising",
+        img: "images/projects/WhatsApp Image 2026-02-25 at 8.25.34 PM.jpeg",
+        description: "Agriculture is the backbone of our target communities, yet climate change makes traditional farming unpredictable. This project installs gravity-fed drip irrigation systems that reduce water waste by 60% and allow farmers to grow high-value vegetables in the dry season.",
+        why: "By ensuring year-round production, we move families from subsistence to surplus, allowing them to afford education and healthcare through crop sales."
+      },
+      p2: {
+        title: "Women Entrepreneurs Fund",
+        category: "SME Funding",
+        categorySlug: "sme-funding",
+        impact: "45 Businesses Launched",
+        status: "Ongoing",
+        img: "images/projects/WhatsApp Image 2026-02-25 at 8.28.51 PM.jpeg",
+        description: "This project targets the gender poverty gap by providing micro-grants to female-led households. We focus on low-overhead businesses like tailoring, small-scale catering, and retail booths.",
+        why: "Studies show that women reinvest 90% of their income back into their families. Supporting these entrepreneurs stabilizes the entire community foundation."
+      },
+      p3: {
+        title: "Digital Literacy Program",
+        category: "Education",
+        categorySlug: "education",
+        impact: "1,200 Students",
+        status: "Active Phase II",
+        img: "images/projects/WhatsApp Image 2026-02-25 at 8.28.50 PM.jpeg",
+        description: "Closing the digital divide is essential for 21st-century survival. We are building computer hubs in remote schools that lack electricity using solar arrays and low-power laptops.",
+        why: "Education is the ultimate poverty-breaker. Providing these tools gives rural children the same competitive edge as their urban counterparts."
+      },
+      p4: {
+        title: "Weekend Meals Program",
+        category: "Food Distribution",
+        categorySlug: "food-distribution",
+        impact: "500 Families",
+        status: "Weekly Routine",
+        img: "images/projects/WhatsApp Image 2026-02-25 at 8.00.28 PM.jpeg",
+        description: "While we work on long-term self-sufficiency, immediate hunger cannot be ignored. Every week, we distribute nutritional kits to the most vulnerable households identified by local chiefs.",
+        why: "A hungry child cannot learn, and a hungry adult cannot work. This safety net provides the physical strength needed to engage in our development programs."
+      },
+      p5: {
+        title: "The Hope Sanctuary",
+        category: "Orphan Care",
+        categorySlug: "orphan-care",
+        impact: "30 Residents",
+        status: "Expanding",
+        img: "images/projects/WhatsApp Image 2026-02-25 at 8.00.27 PM.jpeg",
+        description: "The Hope Sanctuary provides more than just a roof. It is a family environment where children receive specialized trauma counseling, quality education, and life skills training.",
+        why: "Every child deserves a childhood free from fear. We are currently raising funds for a new dormitory wing to house 20 more children currently on our waiting list."
+      },
+      p6: {
+        title: "Winter Blanket Drive",
+        category: "Helping the Needy",
+        categorySlug: "needy",
+        impact: "2,000 Blankets",
+        status: "Urgent/Seasonal",
+        img: "images/projects/WhatsApp Image 2026-02-25 at 8.00.21 PM.jpeg",
+        description: "During harsh winters, exposure is a leading cause of illness in informal settlements. We partner with local manufacturers to distribute high-thermal blankets and basic heating fuel.",
+        why: "Simple interventions save lives. This seasonal project ensures that poverty doesn't become a death sentence during the coldest months of the year."
+      }
+    };
+  </script>
+<script data-purpose="logic-handlers">
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+        projectCards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    const modal = document.getElementById('project-modal');
+    const body = document.body;
+
+    function openModal(projectId) {
+      const data = projectData[projectId];
+      if (!data) return;
+      document.getElementById('modal-title').innerText = data.title;
+      document.getElementById('modal-category').innerText = data.category;
+      document.getElementById('modal-impact').innerText = data.impact;
+      document.getElementById('modal-status').innerText = data.status;
+      document.getElementById('modal-description').innerText = data.description;
+      document.getElementById('modal-why').innerText = data.why;
+      document.getElementById('modal-image').src = data.img;
+      modal.classList.remove('hidden');
+      body.classList.add('modal-active');
+    }
+
+    function closeModal() {
+      modal.classList.add('hidden');
+      body.classList.remove('modal-active');
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+</body></html>

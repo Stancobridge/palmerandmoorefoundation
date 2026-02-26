@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Palmer &amp; Moore | Poverty Alleviation Foundation</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#059669', // emerald-600
+            secondary: '#1d4ed8', // blue-700
+            accent: '#f59e0b', // amber-500
+            background: '#fafaf9', // stone-50
+            textMain: '#1c1917', // stone-900
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-transitions">
+    .nav-transition { transition: all 0.3s ease-in-out; }
+    .hero-overlay { background: rgba(0, 0, 0, 0.4); }
+    .card-hover:hover { transform: translateY(-5px); transition: transform 0.3s ease; }
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-background text-textMain font-sans scroll-smooth">
+<!-- BEGIN: MainHeader -->
+<header class="fixed w-full z-50 bg-white/95 backdrop-blur-sm shadow-sm" data-purpose="main-navigation">
+<nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+<!-- Logo -->
+<a class="font-serif text-2xl font-bold text-primary tracking-tight" href="index.html">
+        Palmer &amp; Moore
+      </a>
+<!-- Desktop Nav -->
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-medium hover:text-primary nav-transition" href="index.html">Home</a>
+<a class="font-medium hover:text-primary nav-transition" href="about.html">About Us</a>
+<a class="font-medium hover:text-primary nav-transition" href="projects.html">Projects</a>
+<a class="font-medium hover:text-primary nav-transition" href="teams.html">Team</a>
+<a class="font-medium hover:text-primary nav-transition" href="contact-us.html">Contact</a>
+<button class="bg-primary text-white px-6 py-2.5 rounded-full font-bold hover:bg-emerald-700 transition-colors shadow-lg">
+          Donate Now
+        </button>
+</div>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden text-2xl focus:outline-none" id="mobile-menu-btn">
+<i class="fa-solid fa-bars"></i>
+</button>
+</nav>
+<!-- Mobile Menu -->
+<div class="hidden md:hidden bg-white border-t border-stone-200 px-6 py-4 flex flex-col space-y-4" id="mobile-menu">
+<a class="block font-medium" href="index.html">Home</a>
+<a class="block font-medium" href="about.html">About Us</a>
+<a class="block font-medium" href="projects.html">Projects</a>
+<a class="block font-medium" href="teams.html">Team</a>
+<a class="block font-medium" href="contact-us.html">Contact</a>
+<button class="w-full bg-primary text-white px-6 py-3 rounded-md font-bold">Donate Now</button>
+</div>
+</header>
+<!-- END: MainHeader -->
+<main>
+<!-- BEGIN: HeroSection -->
+<section class="relative h-screen flex items-center justify-center overflow-hidden" id="home">
+<!-- Hero Background -->
+<div class="absolute inset-0 z-0">
+<img alt="Palmer and Moore Foundation" class="w-full h-full object-cover" src="images/hero-section/hero.jpg"/>
+<div class="absolute inset-0 hero-overlay"></div>
+</div>
+<!-- Hero Content -->
+<div class="relative z-10 text-center text-white px-4 max-w-4xl">
+<h1 class="font-serif text-5xl md:text-7xl mb-6 leading-tight">Empowering Communities, Restoring Dignity.</h1>
+<p class="text-lg md:text-xl mb-10 text-stone-100 max-w-2xl mx-auto">
+          We are dedicated to sustainable poverty alleviation across Nigeria, focusing on education, health, and economic empowerment.
+        </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-primary hover:bg-emerald-700 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl transition-all">
+            Donate Now
+          </button>
+<a class="bg-white/20 backdrop-blur-md border border-white/30 hover:bg-white/30 text-white px-8 py-4 rounded-full font-bold text-lg transition-all" href="#projects">
+            View Projects
+          </a>
+<button class="bg-accent hover:bg-amber-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl transition-all">
+            Get Involved
+          </button>
+</div>
+</div>
+</section>
+<!-- END: HeroSection -->
+<!-- BEGIN: MissionVision -->
+<section class="py-24 bg-white" data-purpose="mission-vision" id="about">
+<div class="container mx-auto px-6">
+<div class="grid md:grid-cols-2 gap-16 items-center">
+<div class="space-y-8">
+<div class="border-l-4 border-primary pl-6">
+<h2 class="font-serif text-4xl mb-4">Our Mission</h2>
+<p class="text-stone-600 text-lg leading-relaxed">
+                To create sustainable pathways out of poverty by providing essential resources, vocational training, and financial support to underserved Nigerian communities.
+              </p>
+</div>
+<div class="border-l-4 border-secondary pl-6">
+<h2 class="font-serif text-4xl mb-4">Our Vision</h2>
+<p class="text-stone-600 text-lg leading-relaxed">
+                A Nigeria where every citizen, regardless of their background, has the opportunity to thrive and contribute to a prosperous nation.
+              </p>
+</div>
+</div>
+<div class="relative">
+<img alt="Community impact" class="rounded-2xl shadow-2xl" src="images/mission-vision.png"/>
+<div class="absolute -bottom-6 -right-6 bg-accent p-8 rounded-2xl hidden lg:block">
+<p class="text-white font-bold text-2xl italic">"Impact through Action"</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: MissionVision -->
+<!-- BEGIN: FounderMessage -->
+<section class="py-24 bg-stone-100" data-purpose="founder-message">
+<div class="container mx-auto px-6">
+<div class="flex flex-col lg:flex-row gap-12 items-center">
+<div class="w-full lg:w-1/3">
+<div class="relative">
+<img alt="Michael Ibeabuchi" class="rounded-3xl shadow-xl border-8 border-white" src="images/teams/ceo.jpeg"/>
+<div class="absolute bottom-4 left-4 right-4 bg-white p-4 rounded-xl text-center shadow-md">
+<h3 class="font-bold text-primary">Michael Ibeabuchi</h3>
+<p class="text-sm text-stone-500 uppercase tracking-widest">Founder &amp; CEO</p>
+</div>
+</div>
+</div>
+<div class="w-full lg:w-2/3">
+<h2 class="font-serif text-4xl mb-8">A Message From Our Founder</h2>
+<div class="prose prose-lg text-stone-600 italic">
+<p class="mb-6">
+                "Poverty is not just a lack of money; it is a lack of opportunity and hope. At Palmer &amp; Moore, we believe that by investing in people—through education, healthcare, and small business support—we can break the cycles of generational poverty that have held back our communities for too long."
+              </p>
+<p>
+                "Our commitment to Nigeria is unwavering. Together, with our donors and volunteers, we are building a foundation of strength, one community at a time."
+              </p>
+</div>
+<div class="mt-8 flex items-center space-x-4">
+<div class="h-px w-12 bg-primary"></div>
+<p class="font-serif font-bold text-xl">Michael Ibeabuchi</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: FounderMessage -->
+<!-- BEGIN: RecentProjects -->
+<section class="py-24 bg-white" id="projects">
+<div class="container mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="font-serif text-4xl mb-4">Our Recent Impact</h2>
+<p class="text-stone-500 max-w-2xl mx-auto">Transforming lives across the federation through strategic intervention and grassroots engagement.</p>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="bg-background rounded-xl overflow-hidden shadow-md card-hover border border-stone-200">
+<img alt="Makoko Project" class="w-full h-52 object-cover" src="images/projects/WhatsApp Image 2026-02-25 at 8.25.35 PM.jpeg"/>
+<div class="p-6">
+<span class="text-xs font-bold text-primary uppercase tracking-widest">Lagos State</span>
+<h3 class="text-xl font-bold mt-2 mb-3">Makoko Floating School Grant</h3>
+<p class="text-stone-600 text-sm mb-4">Providing digital tools and school supplies to over 500 students in the Makoko waterfront community.</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-background rounded-xl overflow-hidden shadow-md card-hover border border-stone-200">
+<img alt="Kano Project" class="w-full h-52 object-cover" src="images/projects/WhatsApp Image 2026-02-25 at 8.00.25 PM (2).jpeg"/>
+<div class="p-6">
+<span class="text-xs font-bold text-primary uppercase tracking-widest">Kano State</span>
+<h3 class="text-xl font-bold mt-2 mb-3">Rural Health Outreach</h3>
+<p class="text-stone-600 text-sm mb-4">Mobile clinics reaching 12 remote villages in Kano, providing essential vaccinations and maternal care.</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-background rounded-xl overflow-hidden shadow-md card-hover border border-stone-200">
+<img alt="Enugu Project" class="w-full h-52 object-cover" src="images/projects/WhatsApp Image 2026-02-25 at 8.28.51 PM.jpeg"/>
+<div class="p-6">
+<span class="text-xs font-bold text-primary uppercase tracking-widest">Enugu State</span>
+<h3 class="text-xl font-bold mt-2 mb-3">Women's Micro-Credit Fund</h3>
+<p class="text-stone-600 text-sm mb-4">Empowering 200 widows with interest-free loans to start sustainable tailoring and catering businesses.</p>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-background rounded-xl overflow-hidden shadow-md card-hover border border-stone-200">
+<img alt="Kaduna Project" class="w-full h-52 object-cover" src="images/projects/WhatsApp Image 2026-02-25 at 8.28.50 PM.jpeg"/>
+<div class="p-6">
+<span class="text-xs font-bold text-primary uppercase tracking-widest">Kaduna State</span>
+<h3 class="text-xl font-bold mt-2 mb-3">Tech Skills Vocational Hub</h3>
+<p class="text-stone-600 text-sm mb-4">A state-of-the-art training center providing coding and hardware repair skills for unemployed youth.</p>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="bg-background rounded-xl overflow-hidden shadow-md card-hover border border-stone-200">
+<img alt="Delta Project" class="w-full h-52 object-cover" src="images/projects/WhatsApp Image 2026-02-25 at 8.00.28 PM.jpeg"/>
+<div class="p-6">
+<span class="text-xs font-bold text-primary uppercase tracking-widest">Delta State</span>
+<h3 class="text-xl font-bold mt-2 mb-3">Borehole Water Project</h3>
+<p class="text-stone-600 text-sm mb-4">Installing solar-powered water systems in 5 oil-impacted communities for safe drinking water.</p>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="bg-background rounded-xl overflow-hidden shadow-md card-hover border border-stone-200">
+<img alt="Oyo Project" class="w-full h-52 object-cover" src="images/projects/WhatsApp Image 2026-02-25 at 8.00.27 PM.jpeg"/>
+<div class="p-6">
+<span class="text-xs font-bold text-primary uppercase tracking-widest">Oyo State</span>
+<h3 class="text-xl font-bold mt-2 mb-3">Smallholder Farmer Grants</h3>
+<p class="text-stone-600 text-sm mb-4">Distributing fertilizers, high-yield seeds, and tractor access to 300 farmers in Ogbomosho.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: RecentProjects -->
+<!-- BEGIN: ProjectGallery -->
+<section class="py-20 bg-stone-50" id="gallery">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-12">
+      <h2 class="font-serif text-4xl mb-4">Project Gallery</h2>
+      <p class="text-stone-500 max-w-2xl mx-auto">A visual journey through our community interventions.</p>
+    </div>
+    
+    <div class="relative">
+      <!-- Slider Container -->
+      <div class="flex overflow-x-auto gap-4 pb-8 snap-x snap-mandatory scrollbar-hide" id="gallery-slider">
+        <!-- Images will be injected here by JS -->
+      </div>
+      
+      <!-- Navigation Buttons -->
+      <button id="slide-left" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white p-3 rounded-full shadow-lg text-primary hover:bg-primary hover:text-white transition z-10 hidden md:block">
+        <i class="fa-solid fa-chevron-left text-xl"></i>
+      </button>
+      <button id="slide-right" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white p-3 rounded-full shadow-lg text-primary hover:bg-primary hover:text-white transition z-10 hidden md:block">
+        <i class="fa-solid fa-chevron-right text-xl"></i>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Image Modal -->
+<div id="image-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm transition-opacity duration-300 opacity-0">
+  <button onclick="closeImageModal()" class="absolute top-6 right-6 text-white/70 hover:text-white transition">
+    <i class="fa-solid fa-xmark text-4xl"></i>
+  </button>
+  <img id="modal-img" src="" alt="Full view" class="max-h-[90vh] max-w-full rounded-lg shadow-2xl scale-95 transition-transform duration-300">
+</div>
+<!-- END: ProjectGallery -->
+<!-- BEGIN: ImpactSnapshot -->
+<section class="py-20 bg-primary text-white overflow-hidden" data-purpose="impact-counters">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+<div class="space-y-2">
+<div class="text-4xl md:text-5xl font-bold" id="counter-beneficiaries">0</div>
+<p class="text-emerald-100 uppercase text-sm tracking-widest">Beneficiaries</p>
+</div>
+<div class="space-y-2">
+<div class="text-4xl md:text-5xl font-bold" id="counter-projects">0</div>
+<p class="text-emerald-100 uppercase text-sm tracking-widest">Projects Completed</p>
+</div>
+<div class="space-y-2">
+<div class="text-4xl md:text-5xl font-bold" id="counter-funds">₦0</div>
+<p class="text-emerald-100 uppercase text-sm tracking-widest">Distributed (Billion)</p>
+</div>
+<div class="space-y-2">
+<div class="text-4xl md:text-5xl font-bold" id="counter-communities">0</div>
+<p class="text-emerald-100 uppercase text-sm tracking-widest">Communities</p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: ImpactSnapshot -->
+<!-- BEGIN: FinalCTA -->
+<section class="py-24 bg-secondary text-white relative" data-purpose="final-call-to-action">
+<div class="container mx-auto px-6 text-center relative z-10">
+<h2 class="font-serif text-4xl md:text-5xl mb-6">Ready to make a difference?</h2>
+<p class="text-xl mb-10 text-blue-100 max-w-2xl mx-auto">
+          Your donation can change the trajectory of a child's life or a whole community. Join us today in building a better Nigeria.
+        </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-accent hover:bg-amber-600 text-white px-10 py-4 rounded-full font-bold text-xl shadow-2xl transition-all">
+            Donate Securely Now
+          </button>
+<button class="bg-transparent border-2 border-white hover:bg-white hover:text-secondary px-10 py-4 rounded-full font-bold text-xl transition-all">
+            Become a Volunteer
+          </button>
+</div>
+</div>
+<!-- Abstract Decor -->
+<div class="absolute top-0 right-0 p-20 opacity-10 pointer-events-none">
+<i class="fa-solid fa-hands-holding-child text-[20rem]"></i>
+</div>
+</section>
+<!-- END: FinalCTA -->
+</main>
+<!-- BEGIN: Footer -->
+<footer class="bg-textMain text-stone-300 py-16" id="contact">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+<!-- Brand -->
+<div>
+<h3 class="font-serif text-2xl text-white mb-6">Palmer &amp; Moore</h3>
+<p class="text-sm leading-relaxed mb-6">
+            Dedicated to uplifting the most vulnerable populations in Nigeria through transparent, sustainable, and community-driven initiatives.
+          </p>
+<div class="flex space-x-4">
+<a class="hover:text-primary transition-colors text-xl" href="#"><i class="fa-brands fa-facebook"></i></a>
+<a class="hover:text-primary transition-colors text-xl" href="#"><i class="fa-brands fa-twitter"></i></a>
+<a class="hover:text-primary transition-colors text-xl" href="#"><i class="fa-brands fa-instagram"></i></a>
+<a class="hover:text-primary transition-colors text-xl" href="#"><i class="fa-brands fa-linkedin"></i></a>
+</div>
+</div>
+<!-- Quick Links -->
+<div>
+<h4 class="text-white font-bold mb-6">Quick Links</h4>
+<ul class="space-y-4 text-sm">
+<li><a class="hover:text-white transition-colors" href="index.html">Home</a></li>
+<li><a class="hover:text-white transition-colors" href="about.html">About Us</a></li>
+<li><a class="hover:text-white transition-colors" href="projects.html">Our Projects</a></li>
+<li><a class="hover:text-white transition-colors" href="teams.html">Meet the Team</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+<!-- Contact Info -->
+<div>
+<h4 class="text-white font-bold mb-6">Contact Us</h4>
+<ul class="space-y-4 text-sm">
+<li class="flex items-start">
+              <i class="fa-solid fa-location-dot mt-1 mr-3 text-primary"></i>
+              <span>House c 149 Broadview idu estate FCT Abuja Nigeria</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fa-solid fa-location-dot mt-1 mr-3 text-primary"></i>
+              <span>No. 1 Shedrack Street Nsugbe College of Education, Onitsha, Anambra State</span>
+            </li>
+<li class="flex items-center">
+<i class="fa-solid fa-phone mr-3 text-primary"></i>
+<span>+234 (0) 800-PALMER-MOORE</span>
+</li>
+<li class="flex items-center">
+<i class="fa-solid fa-envelope mr-3 text-primary"></i>
+<span>info@palmerandmoore.org</span>
+</li>
+</ul>
+</div>
+<!-- Newsletter -->
+<div>
+<h4 class="text-white font-bold mb-6">Stay Updated</h4>
+<p class="text-sm mb-4">Subscribe to our newsletter for impact reports.</p>
+<form class="flex">
+<input class="bg-stone-800 border-none rounded-l-md px-4 py-2 w-full focus:ring-1 focus:ring-primary text-sm" placeholder="Email address" type="email"/>
+<button class="bg-primary text-white px-4 py-2 rounded-r-md hover:bg-emerald-700 transition-colors">
+<i class="fa-solid fa-paper-plane"></i>
+</button>
+</form>
+</div>
+</div>
+<div class="border-t border-stone-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs">
+<p>© 2024 Palmer &amp; Moore Poverty Alleviation Foundation. All Rights Reserved.</p>
+<p class="mt-4 md:mt-0 font-bold text-stone-500 uppercase tracking-widest">Registered NGO in Nigeria (CAC/IT/000000)</p>
+</div>
+</div>
+</footer>
+<!-- END: Footer -->
+<script data-purpose="mobile-menu-logic">
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+<script data-purpose="impact-counters-logic">
+    function animateCounter(id, target, prefix = '', suffix = '') {
+      let current = 0;
+      const duration = 2000;
+      const stepTime = 20;
+      const increment = target / (duration / stepTime);
+      const element = document.getElementById(id);
+
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          clearInterval(timer);
+          element.innerText = prefix + target.toLocaleString() + suffix;
+        } else {
+          element.innerText = prefix + Math.floor(current).toLocaleString() + suffix;
+        }
+      }, stepTime);
+    }
+
+    // Trigger counters when in view
+    const observerOptions = { threshold: 0.5 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter('counter-beneficiaries', 12450);
+          animateCounter('counter-projects', 87);
+          animateCounter('counter-funds', 1.2, '₦', 'B');
+          animateCounter('counter-communities', 62);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    observer.observe(document.querySelector('[data-purpose="impact-counters"]'));
+  </script>
+<script data-purpose="gallery-logic">
+    const galleryImages = [
+      "WhatsApp Image 2026-02-25 at 7.44.56 PM.jpeg",
+      "WhatsApp Image 2026-02-25 at 7.45.04 PM.jpeg",
+      "WhatsApp Image 2026-02-25 at 7.45.08 PM.jpeg",
+      "WhatsApp Image 2026-02-25 at 7.45.09 PM.jpeg",
+      "WhatsApp Image 2026-02-25 at 7.45.11 PM.jpeg",
+      "WhatsApp Image 2026-02-25 at 7.45.12 PM.jpeg",
+      "WhatsApp Image 2026-02-25 at 7.45.13 PM.jpeg",
+      "WhatsApp Image 2026-02-25 at 7.45.14 PM.jpeg",
+      "WhatsApp Image 2026-02-25 at 7.45.15 PM.jpeg",
+      "WhatsApp Image 2026-02-25 at 7.45.16 PM.jpeg",
+      "WhatsApp Image 2026-02-25 at 7.45.17 PM.jpeg",
+      "WhatsApp Image 2026-02-25 at 7.45.18 PM.jpeg",
+      "WhatsApp Image 2026-02-25 at 7.51.47 PM.jpeg",
+      "WhatsApp Image 2026-02-25 at 8.00.15 PM (1).jpeg",
+      "WhatsApp Image 2026-02-25 at 8.00.15 PM.jpeg",
+      "WhatsApp Image 2026-02-25 at 8.00.16 PM.jpeg",
+      "WhatsApp Image 2026-02-25 at 8.00.17 PM (1).jpeg",
+      "WhatsApp Image 2026-02-25 at 8.00.17 PM (2).jpeg",
+      "WhatsApp Image 2026-02-25 at 8.00.17 PM.jpeg",
+      "WhatsApp Image 2026-02-25 at 8.00.18 PM (1).jpeg",
+      "WhatsApp Image 2026-02-25 at 8.00.18 PM.jpeg",
+      "WhatsApp Image 2026-02-25 at 8.00.19 PM (1).jpeg",
+      "WhatsApp Image 2026-02-25 at 8.00.19 PM (2).jpeg",
+      "WhatsApp Image 2026-02-25 at 8.00.19 PM.jpeg",
+      "WhatsApp Image 2026-02-25 at 8.00.20 PM (1).jpeg",
+      "WhatsApp Image 2026-02-25 at 8.00.20 PM.jpeg",
+      "WhatsApp Image 2026-02-25 at 8.00.21 PM (1).jpeg",
+      "WhatsApp Image 2026-02-25 at 8.00.21 PM.jpeg",
+      "WhatsApp Image 2026-02-25 at 8.00.24 PM.jpeg",
+      "WhatsApp Image 2026-02-25 at 8.00.25 PM (1).jpeg",
+      "WhatsApp Image 2026-02-25 at 8.00.25 PM (2).jpeg",
+      "WhatsApp Image 2026-02-25 at 8.00.25 PM.jpeg",
+      "WhatsApp Image 2026-02-25 at 8.00.26 PM (1).jpeg",
+      "WhatsApp Image 2026-02-25 at 8.00.26 PM.jpeg",
+      "WhatsApp Image 2026-02-25 at 8.00.27 PM (1).jpeg",
+      "WhatsApp Image 2026-02-25 at 8.00.27 PM.jpeg",
+      "WhatsApp Image 2026-02-25 at 8.00.28 PM.jpeg",
+      "WhatsApp Image 2026-02-25 at 8.00.38 PM.jpeg",
+      "WhatsApp Image 2026-02-25 at 8.00.42 PM.jpeg",
+      "WhatsApp Image 2026-02-25 at 8.00.43 PM.jpeg",
+      "WhatsApp Image 2026-02-25 at 8.25.34 PM.jpeg",
+      "WhatsApp Image 2026-02-25 at 8.25.35 PM.jpeg",
+      "WhatsApp Image 2026-02-25 at 8.25.36 PM.jpeg",
+      "WhatsApp Image 2026-02-25 at 8.28.50 PM.jpeg",
+      "WhatsApp Image 2026-02-25 at 8.28.51 PM.jpeg"
+    ];
+
+    const slider = document.getElementById('gallery-slider');
+    const imageModal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+
+    // Populate Slider
+    galleryImages.forEach(img => {
+      const div = document.createElement('div');
+      div.className = "flex-none w-72 md:w-80 h-56 rounded-xl overflow-hidden shadow-md cursor-pointer snap-center";
+      div.onclick = () => openImageModal(`images/projects/${img}`);
+      
+      const image = document.createElement('img');
+      image.src = `images/projects/${img}`;
+      image.alt = "Project Gallery Image";
+      image.className = "w-full h-full object-cover hover:scale-110 transition-transform duration-500";
+      image.loading = "lazy";
+
+      div.appendChild(image);
+      slider.appendChild(div);
+    });
+
+    // Slider Navigation
+    document.getElementById('slide-left').onclick = () => {
+      slider.scrollBy({ left: -320, behavior: 'smooth' });
+    };
+
+    document.getElementById('slide-right').onclick = () => {
+      slider.scrollBy({ left: 320, behavior: 'smooth' });
+    };
+
+    // Modal Logic
+    function openImageModal(src) {
+      modalImg.src = src;
+      imageModal.classList.remove('hidden');
+      // Small timeout to allow display:block to apply before opacity transition
+      setTimeout(() => {
+        imageModal.classList.remove('opacity-0');
+        modalImg.classList.remove('scale-95');
+        modalImg.classList.add('scale-100');
+      }, 10);
+    }
+
+    function closeImageModal() {
+      imageModal.classList.add('opacity-0');
+      modalImg.classList.remove('scale-100');
+      modalImg.classList.add('scale-95');
+      setTimeout(() => {
+        imageModal.classList.add('hidden');
+      }, 300);
+    }
+
+    // Close on Escape key
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeImageModal();
+    });
+  </script>
+</body></html>
