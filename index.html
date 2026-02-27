@@ -264,6 +264,27 @@
   <img id="modal-img" src="" alt="Full view" class="max-h-[90vh] max-w-full rounded-lg shadow-2xl scale-95 transition-transform duration-300">
 </div>
 <!-- END: ProjectGallery -->
+
+<!-- BEGIN: VideoGallery -->
+<section class="py-20 bg-white" id="videos">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-12">
+      <h2 class="font-serif text-4xl mb-4">Our Impact in Action</h2>
+      <p class="text-stone-500 max-w-2xl mx-auto">Watch real stories from the field — tap any video to play.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="video-grid"></div>
+  </div>
+</section>
+
+<!-- Video Modal -->
+<div id="video-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm transition-opacity duration-300 opacity-0">
+  <button onclick="closeVideoModal()" class="absolute top-6 right-6 text-white/70 hover:text-white transition z-10">
+    <i class="fa-solid fa-xmark text-4xl"></i>
+  </button>
+  <video id="video-modal-player" class="max-h-[85vh] max-w-full rounded-lg shadow-2xl" controls></video>
+</div>
+<!-- END: VideoGallery -->
+
 <!-- BEGIN: ImpactSnapshot -->
 <section class="py-20 bg-primary text-white overflow-hidden" data-purpose="impact-counters">
 <div class="container mx-auto px-6">
@@ -615,6 +636,85 @@
 
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeDonateModal();
+  });
+</script>
+
+<script data-purpose="video-gallery-logic">
+  const videoUrls = [
+    "https://res.cloudinary.com/www-tutorialspoint-dev/video/upload/v1772110259/palmerandmoore/1_video.mp4",
+    "https://res.cloudinary.com/www-tutorialspoint-dev/video/upload/v1772110259/palmerandmoore/2_video.mp4",
+    "https://res.cloudinary.com/www-tutorialspoint-dev/video/upload/v1772110259/palmerandmoore/3_video.mp4",
+    "https://res.cloudinary.com/www-tutorialspoint-dev/video/upload/v1772110259/palmerandmoore/4_video.mp4",
+    "https://res.cloudinary.com/www-tutorialspoint-dev/video/upload/v1772110259/palmerandmoore/5_video.mp4",
+    "https://res.cloudinary.com/www-tutorialspoint-dev/video/upload/v1772110259/palmerandmoore/6_video.mp4",
+    "https://res.cloudinary.com/www-tutorialspoint-dev/video/upload/v1772110259/palmerandmoore/7_video.mp4",
+    "https://res.cloudinary.com/www-tutorialspoint-dev/video/upload/v1772110259/palmerandmoore/8_video.mp4",
+    "https://res.cloudinary.com/www-tutorialspoint-dev/video/upload/v1772110259/palmerandmoore/9_video.mp4",
+    "https://res.cloudinary.com/www-tutorialspoint-dev/video/upload/v1772110259/palmerandmoore/10_video.mp4",
+    "https://res.cloudinary.com/www-tutorialspoint-dev/video/upload/v1772110259/palmerandmoore/11_video.mp4",
+    "https://res.cloudinary.com/www-tutorialspoint-dev/video/upload/v1772110259/palmerandmoore/12_video.mp4",
+    "https://res.cloudinary.com/www-tutorialspoint-dev/video/upload/v1772110259/palmerandmoore/13_video.mp4",
+    "https://res.cloudinary.com/www-tutorialspoint-dev/video/upload/v1772110259/palmerandmoore/14_video.mp4",
+    "https://res.cloudinary.com/www-tutorialspoint-dev/video/upload/v1772110259/palmerandmoore/15_video.mp4",
+    "https://res.cloudinary.com/www-tutorialspoint-dev/video/upload/v1772110259/palmerandmoore/16_video.mp4",
+    "https://res.cloudinary.com/www-tutorialspoint-dev/video/upload/v1772110259/palmerandmoore/17_video.mp4",
+    "https://res.cloudinary.com/www-tutorialspoint-dev/video/upload/v1772110259/palmerandmoore/18_video.mp4",
+    "https://res.cloudinary.com/www-tutorialspoint-dev/video/upload/v1772110259/palmerandmoore/19_video.mp4",
+    "https://res.cloudinary.com/www-tutorialspoint-dev/video/upload/v1772110259/palmerandmoore/20_video.mp4",
+    "https://res.cloudinary.com/www-tutorialspoint-dev/video/upload/v1772110259/palmerandmoore/21_video.mp4"
+  ];
+
+  const videoGrid = document.getElementById('video-grid');
+  const videoModal = document.getElementById('video-modal');
+  const videoPlayer = document.getElementById('video-modal-player');
+
+  function getPoster(url) {
+    return url.replace('/video/upload/', '/video/upload/so_0,w_640,h_360,c_fill,q_auto/').replace('.mp4', '.jpg');
+  }
+
+  videoUrls.forEach((url, i) => {
+    const card = document.createElement('div');
+    card.className = 'relative rounded-xl overflow-hidden shadow-md cursor-pointer group bg-stone-900 aspect-video';
+    card.onclick = () => openVideoModal(url);
+
+    card.innerHTML =
+      '<img src="' + getPoster(url) + '" alt="Video ' + (i + 1) + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100" loading="lazy">' +
+      '<div class="absolute inset-0 flex items-center justify-center">' +
+        '<div class="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">' +
+          '<i class="fa-solid fa-play text-primary text-xl ml-1"></i>' +
+        '</div>' +
+      '</div>' +
+      '<div class="absolute bottom-3 left-3 bg-black/60 text-white text-xs px-2 py-1 rounded">' +
+        '<i class="fa-solid fa-video mr-1"></i>Video ' + (i + 1) +
+      '</div>';
+
+    videoGrid.appendChild(card);
+  });
+
+  function openVideoModal(src) {
+    videoPlayer.src = src;
+    videoModal.classList.remove('hidden');
+    setTimeout(() => {
+      videoModal.classList.remove('opacity-0');
+      videoPlayer.play();
+    }, 10);
+  }
+
+  function closeVideoModal() {
+    videoPlayer.pause();
+    videoPlayer.src = '';
+    videoModal.classList.add('opacity-0');
+    setTimeout(() => {
+      videoModal.classList.add('hidden');
+    }, 300);
+  }
+
+  document.getElementById('video-modal').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) closeVideoModal();
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !videoModal.classList.contains('hidden')) closeVideoModal();
   });
 </script>
 </body></html>
