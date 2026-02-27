@@ -229,6 +229,26 @@
 </section>
 <!-- END: Directors -->
 
+<!-- BEGIN: FarmProjects -->
+<section class="py-24 bg-stone-100" id="farm-projects">
+<div class="container mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="font-serif text-4xl mb-4">Our Farm Projects</h2>
+<p class="text-stone-500 max-w-2xl mx-auto">Empowering communities through sustainable agriculture and food security initiatives.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="farm-video-grid"></div>
+</div>
+</section>
+
+<!-- Farm Video Modal -->
+<div id="farm-video-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm transition-opacity duration-300 opacity-0">
+  <button onclick="closeFarmVideoModal()" class="absolute top-6 right-6 text-white/70 hover:text-white transition z-10">
+    <i class="fa-solid fa-xmark text-4xl"></i>
+  </button>
+  <video id="farm-video-modal-player" class="max-h-[85vh] max-w-full rounded-lg shadow-2xl" controls></video>
+</div>
+<!-- END: FarmProjects -->
+
 <!-- BEGIN: RecentProjects -->
 <section class="py-24 bg-white" id="projects">
 <div class="container mx-auto px-6">
@@ -769,6 +789,67 @@
 
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && !videoModal.classList.contains('hidden')) closeVideoModal();
+  });
+</script>
+
+<script data-purpose="farm-video-logic">
+  const farmVideos = [
+    "https://res.cloudinary.com/www-tutorialspoint-dev/video/upload/v1772222921/palmerandmoore/farm/farm_1.mp4",
+    "https://res.cloudinary.com/www-tutorialspoint-dev/video/upload/v1772222921/palmerandmoore/farm/farm_2.mp4",
+    "https://res.cloudinary.com/www-tutorialspoint-dev/video/upload/v1772222921/palmerandmoore/farm/farm_3.mp4"
+  ];
+
+  const farmGrid = document.getElementById('farm-video-grid');
+  const farmModal = document.getElementById('farm-video-modal');
+  const farmPlayer = document.getElementById('farm-video-modal-player');
+
+  function getFarmPoster(url) {
+    return url.replace('/video/upload/', '/video/upload/so_0,w_640,h_360,c_fill,q_auto/').replace('.mp4', '.jpg');
+  }
+
+  farmVideos.forEach((url, i) => {
+    const card = document.createElement('div');
+    card.className = 'relative rounded-xl overflow-hidden shadow-md cursor-pointer group bg-stone-900 aspect-video';
+    card.onclick = () => openFarmVideoModal(url);
+
+    card.innerHTML =
+      '<img src="' + getFarmPoster(url) + '" alt="Farm Project ' + (i + 1) + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100" loading="lazy">' +
+      '<div class="absolute inset-0 flex items-center justify-center">' +
+        '<div class="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">' +
+          '<i class="fa-solid fa-play text-primary text-xl ml-1"></i>' +
+        '</div>' +
+      '</div>' +
+      '<div class="absolute bottom-3 left-3 bg-black/60 text-white text-xs px-2 py-1 rounded">' +
+        '<i class="fa-solid fa-seedling mr-1"></i>Farm Project ' + (i + 1) +
+      '</div>';
+
+    farmGrid.appendChild(card);
+  });
+
+  function openFarmVideoModal(src) {
+    farmPlayer.src = src;
+    farmModal.classList.remove('hidden');
+    setTimeout(() => {
+      farmModal.classList.remove('opacity-0');
+      farmPlayer.play();
+    }, 10);
+  }
+
+  function closeFarmVideoModal() {
+    farmPlayer.pause();
+    farmPlayer.src = '';
+    farmModal.classList.add('opacity-0');
+    setTimeout(() => {
+      farmModal.classList.add('hidden');
+    }, 300);
+  }
+
+  farmModal.addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) closeFarmVideoModal();
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !farmModal.classList.contains('hidden')) closeFarmVideoModal();
   });
 </script>
 </body></html>
