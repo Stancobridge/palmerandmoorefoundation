@@ -249,6 +249,18 @@
 </div>
 <!-- END: FarmProjects -->
 
+<!-- BEGIN: MedicalProjects -->
+<section class="py-24 bg-white" id="medical-projects">
+<div class="container mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="font-serif text-4xl mb-4">Medical &amp; Health Projects</h2>
+<p class="text-stone-500 max-w-2xl mx-auto">Providing essential healthcare services and medical outreach to underserved communities.</p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4" id="medical-grid"></div>
+</div>
+</section>
+<!-- END: MedicalProjects -->
+
 <!-- BEGIN: RecentProjects -->
 <section class="py-24 bg-white" id="projects">
 <div class="container mx-auto px-6">
@@ -850,6 +862,46 @@
 
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && !farmModal.classList.contains('hidden')) closeFarmVideoModal();
+  });
+</script>
+
+<script data-purpose="medical-grid-logic">
+  const medicalImages = [
+    "Screenshot from 2026-02-27 21-54-44.png",
+    "Screenshot from 2026-02-27 21-55-41.png",
+    "Screenshot from 2026-02-27 21-55-58.png",
+    "Screenshot from 2026-02-27 21-56-30.png",
+    "Screenshot from 2026-02-27 21-57-43.png",
+    "Screenshot from 2026-02-27 21-58-17.png",
+    "Screenshot from 2026-02-27 21-58-32.png",
+    "Screenshot from 2026-02-27 21-58-49.png",
+    "Screenshot from 2026-02-27 21-59-07.png",
+    "Screenshot from 2026-02-27 21-59-36.png",
+    "Screenshot from 2026-02-27 21-59-49.png",
+    "Screenshot from 2026-02-27 22-00-26.png",
+    "Screenshot from 2026-02-27 22-00-43.png",
+    "Screenshot from 2026-02-27 22-01-25.png",
+    "Screenshot from 2026-02-27 22-01-45.png",
+    "Screenshot from 2026-02-27 22-13-15.png",
+    "Screenshot from 2026-02-27 22-14-12.png",
+    "Screenshot from 2026-02-27 22-14-35.png"
+  ];
+
+  const medicalGrid = document.getElementById('medical-grid');
+
+  medicalImages.forEach((img, i) => {
+    const div = document.createElement('div');
+    div.className = 'aspect-square rounded-xl overflow-hidden shadow-md bg-stone-200 group cursor-pointer';
+    div.onclick = () => openImageModal('images/medicals/' + img);
+
+    const image = document.createElement('img');
+    image.src = 'images/medicals/' + img;
+    image.alt = 'Medical Outreach ' + (i + 1);
+    image.className = 'w-full h-full object-cover group-hover:scale-105 transition-transform duration-500';
+    image.loading = 'lazy';
+
+    div.appendChild(image);
+    medicalGrid.appendChild(div);
   });
 </script>
 </body></html>
