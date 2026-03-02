@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Organogram | Palmer &amp; Moore Poverty Alleviation Foundation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#059669',
+            secondary: '#1d4ed8',
+            accent: '#f59e0b',
+            background: '#fafaf9',
+            textMain: '#1c1917',
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .nav-transition { transition: all 0.3s ease-in-out; }
+    .hero-overlay { background: rgba(0, 0, 0, 0.4); }
+
+    .org-node {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .org-node:hover {
+      transform: translate(-50%, -50%) scale(1.1);
+      z-index: 20;
+    }
+    .org-center-node {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+    }
+    .org-photo {
+      border: 3px solid #fff;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+      transition: border-color 0.3s ease;
+    }
+    .org-node:hover .org-photo {
+      border-color: #059669;
+    }
+    .org-connector {
+      stroke: #d6d3d1;
+      stroke-width: 1.5;
+      stroke-dasharray: 6 4;
+      transition: stroke 0.3s ease;
+    }
+    .org-ring {
+      fill: none;
+      stroke: #e7e5e4;
+      stroke-width: 2;
+      stroke-dasharray: 10 6;
+    }
+    .org-inner-glow {
+      fill: none;
+      stroke: #059669;
+      stroke-width: 1;
+      opacity: 0.15;
+    }
+    @keyframes pulseRing {
+      0%, 100% { opacity: 0.15; }
+      50% { opacity: 0.3; }
+    }
+    .org-pulse {
+      animation: pulseRing 3s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="bg-background text-textMain font-sans scroll-smooth">
+<!-- BEGIN: MainHeader -->
+<header class="fixed w-full z-50 bg-white/95 backdrop-blur-sm shadow-sm">
+<nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+<a class="font-serif text-2xl font-bold text-primary tracking-tight" href="index.html">
+        Palmer &amp; Moore
+      </a>
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-medium hover:text-primary nav-transition" href="index.html">Home</a>
+<a class="font-medium hover:text-primary nav-transition" href="about.html">About Us</a>
+<a class="font-medium hover:text-primary nav-transition" href="projects.html">Projects</a>
+<a class="font-medium hover:text-primary nav-transition" href="teams.html">Team</a>
+<a class="font-medium text-primary nav-transition" href="organogram.html">Organogram</a>
+<a class="font-medium hover:text-primary nav-transition" href="contact-us.html">Contact</a>
+<button onclick="openDonateModal()" class="bg-primary text-white px-6 py-2.5 rounded-full font-bold hover:bg-emerald-700 transition-colors shadow-lg">
+          Donate Now
+        </button>
+</div>
+<button class="md:hidden text-2xl focus:outline-none" id="mobile-menu-btn">
+<i class="fa-solid fa-bars"></i>
+</button>
+</nav>
+<div class="hidden md:hidden bg-white border-t border-stone-200 px-6 py-4 flex flex-col space-y-4" id="mobile-menu">
+<a class="block font-medium" href="index.html">Home</a>
+<a class="block font-medium" href="about.html">About Us</a>
+<a class="block font-medium" href="projects.html">Projects</a>
+<a class="block font-medium" href="teams.html">Team</a>
+<a class="block font-medium" href="organogram.html">Organogram</a>
+<a class="block font-medium" href="contact-us.html">Contact</a>
+<button onclick="openDonateModal()" class="w-full bg-primary text-white px-6 py-3 rounded-md font-bold">Donate Now</button>
+</div>
+</header>
+<!-- END: MainHeader -->
+
+<main>
+<!-- BEGIN: Page Hero -->
+<section class="relative py-32 md:py-40 flex items-center justify-center text-center text-white overflow-hidden">
+<div class="absolute inset-0 z-0 bg-primary">
+<div class="absolute inset-0 hero-overlay"></div>
+</div>
+<div class="relative z-10 max-w-3xl px-4">
+<h1 class="font-serif text-4xl md:text-6xl mb-6 leading-tight">Organizational Structure</h1>
+<p class="text-lg md:text-xl text-emerald-100 max-w-2xl mx-auto">The leadership framework driving our mission to alleviate poverty and empower communities across Nigeria.</p>
+</div>
+</section>
+<!-- END: Page Hero -->
+
+<!-- BEGIN: Organogram -->
+<section class="py-16 md:py-24 bg-white">
+<div class="container mx-auto px-6">
+<div class="text-center mb-12 md:mb-16">
+<h2 class="font-serif text-3xl md:text-4xl">Our Leadership Circle</h2>
+<p class="text-stone-500 mt-4 max-w-2xl mx-auto">Every role is vital. Together, we form a unified structure centered around our mission.</p>
+<div class="w-24 h-1 bg-primary mx-auto mt-4"></div>
+</div>
+
+<!-- Desktop Circular Organogram -->
+<div id="organogram-desktop" class="hidden md:block relative mx-auto" style="max-width: 900px;">
+  <div id="org-canvas" class="relative w-full" style="padding-bottom: 100%;">
+    <svg id="org-svg" class="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div id="org-nodes" class="absolute inset-0"></div>
+  </div>
+</div>
+
+<!-- Mobile Layout -->
+<div id="organogram-mobile" class="md:hidden"></div>
+
+</div>
+</section>
+<!-- END: Organogram -->
+</main>
+
+<!-- BEGIN: Footer -->
+<footer class="bg-textMain text-stone-300 py-16">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+<div>
+<h3 class="font-serif text-2xl text-white mb-6">Palmer &amp; Moore</h3>
+<p class="text-sm leading-relaxed mb-6">
+            Dedicated to uplifting the most vulnerable populations in Nigeria through transparent, sustainable, and community-driven initiatives.
+          </p>
+<div class="flex space-x-4">
+<a class="hover:text-primary transition-colors text-xl" href="https://facebook.com/Palmerandmoorepovertyalleviationfoundation" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook"></i></a>
+<a class="hover:text-primary transition-colors text-xl" href="https://twitter.com/palmerandmoorepaf" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-twitter"></i></a>
+<a class="hover:text-primary transition-colors text-xl" href="https://instagram.com/palmerandmoorepaf" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+</div>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Quick Links</h4>
+<ul class="space-y-4 text-sm">
+<li><a class="hover:text-white transition-colors" href="index.html">Home</a></li>
+<li><a class="hover:text-white transition-colors" href="about.html">About Us</a></li>
+<li><a class="hover:text-white transition-colors" href="projects.html">Our Projects</a></li>
+<li><a class="hover:text-white transition-colors" href="teams.html">Meet the Team</a></li>
+<li><a class="hover:text-white transition-colors" href="organogram.html">Organogram</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Contact Us</h4>
+<ul class="space-y-4 text-sm">
+<li class="flex items-center">
+<i class="fa-solid fa-phone mr-3 text-primary"></i>
+<span>+234 (0) 800-PALMER-MOORE</span>
+</li>
+<li class="flex items-center">
+<i class="fa-solid fa-envelope mr-3 text-primary"></i>
+<span>info@palmerandmoore.org</span>
+</li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Stay Updated</h4>
+<p class="text-sm mb-4">Subscribe to our newsletter for impact reports.</p>
+<form class="flex">
+<input class="bg-stone-800 border-none rounded-l-md px-4 py-2 w-full focus:ring-1 focus:ring-primary text-sm" placeholder="Email address" type="email"/>
+<button class="bg-primary text-white px-4 py-2 rounded-r-md hover:bg-emerald-700 transition-colors">
+<i class="fa-solid fa-paper-plane"></i>
+</button>
+</form>
+</div>
+</div>
+<div class="border-t border-stone-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs">
+<p>&copy; 2024 Palmer &amp; Moore Poverty Alleviation Foundation. All Rights Reserved.</p>
+<p class="mt-4 md:mt-0 font-bold text-stone-500 uppercase tracking-widest">Registered NGO in Nigeria (CAC/IT/000000)</p>
+</div>
+</div>
+</footer>
+<!-- END: Footer -->
+
+<script data-purpose="mobile-menu-logic">
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+</script>
+
+<!-- BEGIN: Donate Modal -->
+<div id="donate-modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center p-3 bg-black/70 backdrop-blur-sm transition-opacity duration-300 opacity-0 overflow-y-auto">
+  <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden transform scale-95 transition-transform duration-300 my-auto" id="donate-modal-content">
+    <div class="bg-primary px-5 py-4 flex justify-between items-center sticky top-0 z-10">
+      <h2 class="text-white font-serif text-xl">Support Our Mission</h2>
+      <button onclick="closeDonateModal()" class="text-white/80 hover:text-white transition">
+        <i class="fa-solid fa-xmark text-xl"></i>
+      </button>
+    </div>
+    <div class="p-5 space-y-4">
+      <p class="text-stone-600 text-sm">Thank you for choosing to donate. Please transfer your contribution to either of the accounts below:</p>
+      <div class="border border-emerald-200 bg-emerald-50 rounded-lg p-4">
+        <span class="bg-primary text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Dollar Account (USD)</span>
+        <div class="space-y-1.5 text-sm mt-3">
+          <div class="flex justify-between gap-2"><span class="text-stone-500 text-xs shrink-0">Account Name</span><span class="font-bold text-stone-800 text-xs text-right">Palmer and Moore Poverty Alleviation Foundation</span></div>
+          <div class="flex justify-between gap-2"><span class="text-stone-500 text-xs">Account No.</span><span class="font-bold text-stone-800 font-mono text-sm">3004412521</span></div>
+          <div class="flex justify-between gap-2"><span class="text-stone-500 text-xs">Bank</span><span class="font-bold text-stone-800 text-xs">United Bank for Africa (UBA)</span></div>
+        </div>
+      </div>
+      <div class="border border-blue-200 bg-blue-50 rounded-lg p-4">
+        <span class="bg-secondary text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Naira Account (NGN)</span>
+        <div class="space-y-1.5 text-sm mt-3">
+          <div class="flex justify-between gap-2"><span class="text-stone-500 text-xs shrink-0">Account Name</span><span class="font-bold text-stone-800 text-xs text-right">Palmer and Moore Poverty Alleviation Foundation</span></div>
+          <div class="flex justify-between gap-2"><span class="text-stone-500 text-xs">Account No.</span><span class="font-bold text-stone-800 font-mono text-sm">1027086929</span></div>
+          <div class="flex justify-between gap-2"><span class="text-stone-500 text-xs">Bank</span><span class="font-bold text-stone-800 text-xs">United Bank for Africa (UBA)</span></div>
+        </div>
+      </div>
+      <p class="text-[11px] text-stone-400 text-center">Every contribution, no matter the size, changes lives. God bless you.</p>
+    </div>
+  </div>
+</div>
+<!-- END: Donate Modal -->
+<script data-purpose="donate-modal-logic">
+  function openDonateModal() {
+    const modal = document.getElementById('donate-modal');
+    const content = document.getElementById('donate-modal-content');
+    modal.classList.remove('hidden');
+    setTimeout(() => { modal.classList.remove('opacity-0'); content.classList.remove('scale-95'); content.classList.add('scale-100'); }, 10);
+  }
+  function closeDonateModal() {
+    const modal = document.getElementById('donate-modal');
+    const content = document.getElementById('donate-modal-content');
+    modal.classList.add('opacity-0'); content.classList.remove('scale-100'); content.classList.add('scale-95');
+    setTimeout(() => { modal.classList.add('hidden'); }, 300);
+  }
+  document.getElementById('donate-modal').addEventListener('click', (e) => { if (e.target === e.currentTarget) closeDonateModal(); });
+  window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDonateModal(); });
+</script>
+
+<script data-purpose="organogram-logic">
+  const orgData = {
+    center: {
+      name: "Michael Ibeabuchi Ipiankama",
+      title: "Chairman/CEO",
+      image: "images/teams/ceo.jpeg",
+      color: "primary"
+    },
+    positions: [
+      { name: "Psalms Nwadinkpa Mbagwu", title: "General Director", image: "images/teams/director.jpeg" },
+      { name: "TBA", title: "National Youth Leader", image: "images/teams/organogram/youth-leader.png" },
+      { name: "TBA", title: "Conference/IT/Workshop Director", image: "images/teams/organogram/it-director.png" },
+      { name: "TBA", title: "Accountant General", image: "images/teams/organogram/account.jpeg" },
+      { name: "TBA", title: "Assistant Secretary", image: "images/teams/organogram/assistant-general.jpeg" },
+      { name: "TBA", title: "Store Keeper", image: "images/teams/organogram/storekeeper.jpeg" },
+      { name: "TBA", title: "Media and Publicity", image: "images/teams/organogram/media-publicity.png" },
+      { name: "TBA", title: "Youth Speaker", image: "images/teams/organogram/youth-speaker.png" },
+      { name: "TBA", title: "PRO II", image: "images/teams/organogram/pro-2.jpeg" },
+      { name: "TBA", title: "Media and Publicity II", image: "images/teams/organogram/media-publicity-2.jpeg" },
+      { name: "TBA", title: "Director of Agriculture", image: "images/teams/organogram/director-of-agriculture.jpeg" },
+      { name: "TBA", title: "Public Relations Officer", image: "images/teams/organogram/pro.jpeg" },
+    ]
+  };
+
+  const positionIcons = {
+    "Chairman/CEO": "fa-crown",
+    "General Director": "fa-user-tie",
+    "National Youth Leader": "fa-children",
+    "Conference/IT/Workshop Director": "fa-laptop-code",
+    "Accountant General": "fa-file-invoice-dollar",
+    "Assistant Secretary": "fa-pen-clip",
+    "Store Keeper": "fa-warehouse",
+    "Media and Publicity": "fa-newspaper",
+    "Youth Speaker": "fa-microphone",
+    "PRO II": "fa-bullhorn",
+    "Media and Publicity II": "fa-newspaper",
+    "Director of Agriculture": "fa-seedling",
+    "Secretary General": "fa-pen-fancy",
+    "Treasurer": "fa-coins",
+    "Financial Secretary": "fa-calculator",
+    "Legal Adviser": "fa-scale-balanced",
+    "Director of Programs": "fa-diagram-project",
+    "Public Relations Officer": "fa-bullhorn",
+    "Welfare Director": "fa-hand-holding-heart",
+    "Director of Operations": "fa-gears",
+    "Project Coordinator": "fa-list-check",
+    "Community Liaison": "fa-people-group",
+    "Auditor": "fa-magnifying-glass-chart",
+  };
+
+  function getPhotoHTML(person, size, ringColor) {
+    const sizeClass = size === 'lg' ? 'w-20 h-20' : 'w-14 h-14';
+    const iconSize = size === 'lg' ? 'text-2xl' : 'text-lg';
+    const ringClass = ringColor === 'primary' ? 'ring-primary' : 'ring-secondary';
+    const icon = positionIcons[person.title] || 'fa-user';
+
+    if (person.image) {
+      return '<img src="' + person.image + '" alt="' + person.name + '" class="' + sizeClass + ' rounded-full object-cover object-top org-photo ring-2 ' + ringClass + '" />';
+    }
+    return '<div class="' + sizeClass + ' rounded-full bg-stone-100 flex items-center justify-center org-photo ring-2 ' + ringClass + '">' +
+      '<i class="fa-solid ' + icon + ' ' + iconSize + ' text-stone-400"></i></div>';
+  }
+
+  function renderDesktop() {
+    const canvas = document.getElementById('org-canvas');
+    const svg = document.getElementById('org-svg');
+    const nodesContainer = document.getElementById('org-nodes');
+    const positions = orgData.positions;
+    const n = positions.length;
+
+    const cxPct = 50;
+    const cyPct = 50;
+    const radiusPct = 38;
+
+    let svgContent = '';
+
+    // Outer dashed ring
+    svgContent += '<circle cx="50%" cy="50%" r="' + radiusPct + '%" class="org-ring" />';
+
+    // Inner glow ring around center
+    svgContent += '<circle cx="50%" cy="50%" r="8%" class="org-inner-glow org-pulse" />';
+
+    // Connector lines from center to each position
+    for (let i = 0; i < n; i++) {
+      const angle = (i / n) * 2 * Math.PI - Math.PI / 2;
+      const xPct = cxPct + radiusPct * Math.cos(angle);
+      const yPct = cyPct + radiusPct * Math.sin(angle);
+      svgContent += '<line x1="50%" y1="50%" x2="' + xPct + '%" y2="' + yPct + '%" class="org-connector" />';
+    }
+
+    svg.innerHTML = svgContent;
+
+    // Center node: photo anchored at exact center, label below
+    let nodesHTML = '';
+    nodesHTML += '<div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:10;">';
+    nodesHTML += getPhotoHTML(orgData.center, 'lg', 'primary');
+    nodesHTML += '</div>';
+    nodesHTML += '<div style="position:absolute;left:50%;top:calc(50% + 48px);transform:translateX(-50%);z-index:10;text-align:center;width:160px;">';
+    nodesHTML += '<p class="font-bold text-sm leading-tight text-stone-800">' + orgData.center.name + '</p>';
+    nodesHTML += '<span class="text-[11px] font-semibold text-primary uppercase tracking-wider">' + orgData.center.title + '</span>';
+    nodesHTML += '</div>';
+
+    // Outer nodes
+    for (let i = 0; i < n; i++) {
+      const angle = (i / n) * 2 * Math.PI - Math.PI / 2;
+      const xPct = cxPct + radiusPct * Math.cos(angle);
+      const yPct = cyPct + radiusPct * Math.sin(angle);
+
+      nodesHTML += '<div class="org-node" style="left:' + xPct + '%;top:' + yPct + '%;">';
+      nodesHTML += '<div class="flex flex-col items-center text-center bg-white rounded-xl px-3 py-3 shadow-md border border-stone-100" style="width:130px;">';
+      nodesHTML += getPhotoHTML(positions[i], 'sm', 'secondary');
+      nodesHTML += '<p class="font-semibold text-xs mt-1.5 leading-tight text-stone-700">' + positions[i].name + '</p>';
+      nodesHTML += '<span class="text-[10px] font-medium text-secondary uppercase tracking-wider mt-0.5 leading-tight">' + positions[i].title + '</span>';
+      nodesHTML += '</div></div>';
+    }
+
+    nodesContainer.innerHTML = nodesHTML;
+  }
+
+  function renderMobile() {
+    const container = document.getElementById('organogram-mobile');
+    let html = '';
+
+    // Center/Chairman card
+    html += '<div class="flex flex-col items-center text-center mb-8">';
+    html += '<div class="relative">';
+    html += '<div class="w-28 h-28 rounded-full overflow-hidden ring-4 ring-primary shadow-xl">';
+    if (orgData.center.image) {
+      html += '<img src="' + orgData.center.image + '" alt="' + orgData.center.name + '" class="w-full h-full object-cover object-top" />';
+    } else {
+      html += '<div class="w-full h-full bg-stone-100 flex items-center justify-center"><i class="fa-solid fa-crown text-3xl text-stone-400"></i></div>';
+    }
+    html += '</div>';
+    html += '<div class="absolute -bottom-1 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-full whitespace-nowrap">' + orgData.center.title + '</div>';
+    html += '</div>';
+    html += '<h3 class="font-bold text-lg mt-4">' + orgData.center.name + '</h3>';
+    html += '</div>';
+
+    // Vertical line from chairman
+    html += '<div class="w-0.5 h-8 bg-stone-300 mx-auto"></div>';
+
+    // Outer positions grid
+    html += '<div class="grid grid-cols-2 gap-4">';
+    orgData.positions.forEach(function(person) {
+      var icon = positionIcons[person.title] || 'fa-user';
+      html += '<div class="bg-white rounded-xl p-4 shadow-md border border-stone-100 flex flex-col items-center text-center">';
+      if (person.image) {
+        html += '<img src="' + person.image + '" alt="' + person.name + '" class="w-14 h-14 rounded-full object-cover object-top ring-2 ring-secondary shadow" />';
+      } else {
+        html += '<div class="w-14 h-14 rounded-full bg-stone-100 flex items-center justify-center ring-2 ring-secondary"><i class="fa-solid ' + icon + ' text-lg text-stone-400"></i></div>';
+      }
+      html += '<p class="font-semibold text-xs mt-2 leading-tight">' + person.name + '</p>';
+      html += '<span class="text-[10px] text-secondary font-medium uppercase tracking-wider mt-1">' + person.title + '</span>';
+      html += '</div>';
+    });
+    html += '</div>';
+
+    container.innerHTML = html;
+  }
+
+  renderDesktop();
+  renderMobile();
+</script>
+
+</body></html>
