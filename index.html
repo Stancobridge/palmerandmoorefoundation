@@ -325,9 +325,32 @@
 <p class="text-stone-600 text-sm mb-4">Distributing fertilizers, high-yield seeds, and tractor access to 300 farmers across rural communities.</p>
 </div>
 </div>
+<!-- Video Card -->
+<div class="bg-background rounded-xl overflow-hidden shadow-md card-hover border border-stone-200 cursor-pointer relative group" onclick="openRecentImpactVideo()">
+<div class="relative h-52 bg-stone-900">
+<img alt="Abia State Impact Video" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300" src="https://res.cloudinary.com/www-tutorialspoint-dev/video/upload/so_0,w_640,h_360,c_fill,q_auto/v1772552356/palmerandmoore/abia_rhdxuf.jpg" />
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-14 h-14 bg-white/90 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+<i class="fa-solid fa-play text-primary text-lg ml-1"></i>
+</div>
+</div>
+</div>
+<div class="p-6">
+<span class="text-xs font-bold text-primary uppercase tracking-widest">Community Impact</span>
+<h3 class="text-xl font-bold mt-2 mb-3">Abia State Outreach</h3>
+<p class="text-stone-600 text-sm mb-4">Watch our team making a direct impact in communities across Abia State.</p>
+</div>
+</div>
 </div>
 </div>
 </section>
+<!-- Recent Impact Video Modal -->
+<div id="recent-impact-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm transition-opacity duration-300 opacity-0">
+  <button onclick="closeRecentImpactVideo()" class="absolute top-6 right-6 text-white/70 hover:text-white transition z-10">
+    <i class="fa-solid fa-xmark text-4xl"></i>
+  </button>
+  <video id="recent-impact-player" class="max-h-[85vh] max-w-full rounded-lg shadow-2xl" controls></video>
+</div>
 <!-- END: RecentProjects -->
 <!-- BEGIN: ProjectGallery -->
 <section class="py-20 bg-stone-50" id="gallery">
@@ -537,6 +560,37 @@
 
     observer.observe(document.querySelector('[data-purpose="impact-counters"]'));
   </script>
+<script data-purpose="recent-impact-video-logic">
+  function openRecentImpactVideo() {
+    var modal = document.getElementById('recent-impact-modal');
+    var player = document.getElementById('recent-impact-player');
+    player.src = 'https://res.cloudinary.com/www-tutorialspoint-dev/video/upload/v1772552356/palmerandmoore/abia_rhdxuf.mp4';
+    modal.classList.remove('hidden');
+    setTimeout(function() {
+      modal.classList.remove('opacity-0');
+      player.play();
+    }, 10);
+  }
+
+  function closeRecentImpactVideo() {
+    var modal = document.getElementById('recent-impact-modal');
+    var player = document.getElementById('recent-impact-player');
+    player.pause();
+    player.src = '';
+    modal.classList.add('opacity-0');
+    setTimeout(function() {
+      modal.classList.add('hidden');
+    }, 300);
+  }
+
+  document.getElementById('recent-impact-modal').addEventListener('click', function(e) {
+    if (e.target === e.currentTarget) closeRecentImpactVideo();
+  });
+
+  window.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && !document.getElementById('recent-impact-modal').classList.contains('hidden')) closeRecentImpactVideo();
+  });
+</script>
 <script data-purpose="gallery-logic">
     const galleryImages = [
       "WhatsApp Image 2026-02-25 at 7.44.56 PM.jpeg",
