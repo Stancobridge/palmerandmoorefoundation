@@ -154,18 +154,6 @@
 </section>
 <!-- END: MedicalProjects -->
 
-<!-- BEGIN: Team Members Grid -->
-<section class="py-24 bg-stone-100">
-<div class="container mx-auto px-6">
-<div class="text-center mb-16">
-<h2 class="font-serif text-4xl">Our Team</h2>
-<p class="text-stone-500 mt-4 max-w-2xl mx-auto">The dedicated individuals powering our mission on the ground every day.</p>
-<div class="w-24 h-1 bg-primary mx-auto mt-4"></div>
-</div>
-<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4" id="team-grid"></div>
-</div>
-</section>
-<!-- END: Team Members Grid -->
 
 </main>
 <!-- BEGIN: Footer -->
@@ -286,25 +274,6 @@
   window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDonateModal(); });
 </script>
 
-<script data-purpose="team-grid-logic">
-  const teamGrid = document.getElementById('team-grid');
-  const totalMembers = 44;
-
-  for (let i = 1; i <= totalMembers; i++) {
-    const num = String(i).padStart(2, '0');
-    const div = document.createElement('div');
-    div.className = 'aspect-square rounded-xl overflow-hidden shadow-md bg-stone-200 group';
-
-    const img = document.createElement('img');
-    img.src = 'images/teams/team-member-' + num + '.jpeg';
-    img.alt = 'Team Member';
-    img.className = 'w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500';
-    img.loading = 'lazy';
-
-    div.appendChild(img);
-    teamGrid.appendChild(div);
-  }
-</script>
 
 <!-- Image Modal -->
 <div id="image-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm transition-opacity duration-300 opacity-0">
